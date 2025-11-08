@@ -1,17 +1,18 @@
 // db.js
 
-const mysql = require('mysql2');
+const { Pool } = require('pg');
 
 // Configuración de la conexión a la base de datos "IA-CRUD"
-const pool = mysql.createPool({
-    host: 'localhost', // O la dirección de tu servidor de BD
-    user: 'root',      // Tu usuario de MySQL
-    password: '', // Tu contraseña de MySQL
-    database: 'IA-CRUD', // Nombre de la base de datos
-    waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+const pool = new Pool({
+    host: 'dpg-d474s3shg0os73fejntg-a',      // o la dirección de tu servidor
+    user: 'useroptional',       // tu usuario de PostgreSQL
+    password: 'C9BhGamZg31Yq5WQR4sEFxkLqYHFr5pu', // tu contraseña
+    database: 'IA-CRUD',    // nombre de tu base de datos
+    port: 5432,             // puerto por defecto de PostgreSQL
+    max: 10,        
+    ssl:{rejectUnauthorized:false},        // límite de conexiones
+    idleTimeoutMillis: 30000,
 });
 
-// Exportar el pool para ser usado en los controladores
-module.exports = pool.promise();
+// Exportar el pool para usar en los controladores
+module.exports = pool;
