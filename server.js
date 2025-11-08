@@ -20,9 +20,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+
 // ----------------------
 // ENDPOINTS DE LA API (CRUD)
 // ----------------------
+
 
 // C: CREATE - Crear un nuevo autor
 // POST http://localhost:3000/api/autores
